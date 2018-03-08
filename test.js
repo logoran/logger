@@ -61,7 +61,7 @@ describe('logoran-logger', function (done) {
 
     it('should log a request with correct method and url', function (done) {
       request(app.listen()).head('/200').expect(200, function () {
-        expect(log).to.have.been.calledWith('  ' + moment(Date.now()).format('YYYY-MM-DD HH:mm:ss') + chalk.gray('<--') +
+        expect(log).to.have.been.calledWith('  ' + moment(Date.now()).format('YYYY-MM-DD HH:mm:ss') + ' ' + chalk.gray('<--') +
           ' ' + chalk.bold('%s') +
           ' ' + chalk.gray('%s'),
             'HEAD',
