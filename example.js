@@ -1,8 +1,8 @@
 
 const logger = require('./')
-const Koa = require('koa')
+const Logoran = require('logoran')
 const compress = require('koa-compress')()
-const app = new Koa()
+const app = new Logoran()
 
 // wrap subsequent middleware in a logger
 

@@ -3,42 +3,52 @@
  * test server
  */
 
-const Koa = require('koa')
+const Logoran = require('logoran')
 const Boom = require('boom')
-const _ = require('koa-route')
+const Router = require('logoran-router')
+const router = new Router();
 const logger = require('./index')
 
-const app = new Koa()
+const app = new Logoran()
 app.use(logger())
 
-app.use(_.get('/200', function (ctx) {
-  ctx.body = 'hello world'
-}))
+router.get('/200', function (ctx, next) {
+  ctx.body = 'hello world';
+  next();
+});
 
-app.use(_.get('/301', function (ctx) {
-  ctx.status = 301
-}))
+router.get('/301', function (ctx, next) {
+  ctx.status = 301;
+  next();
+});
 
-app.use(_.get('/304', function (ctx) {
-  ctx.status = 304
-}))
+router.get('/304', function (ctx, next) {
+  ctx.status = 304;
+  next();
+});
 
-app.use(_.get('/404', function (ctx) {
-  ctx.status = 404
-  ctx.body = 'not found'
-}))
+router.get('/404', function (ctx, next) {
+  ctx.status = 404;
+  ctx.body = 'not found';
+  next();
+});
 
-app.use(_.get('/500', function (ctx) {
-  ctx.status = 500
-  ctx.body = 'server error'
-}))
+router.get('/500', function (ctx, next) {
+  ctx.status = 500;
+  ctx.body = 'server error';
+  next();
+});
 
-app.use(_.get('/500-boom', function (ctx) {
-  ctx.throw(Boom.badImplementation('terrible implementation'))
-}))
+router.get('/500-boom', function (ctx) {
+  ctx.throw(Boom.badImplementation('terrible implementation'));
+});
 
-app.use(_.get('/error', function (ctx) {
-  throw new Error('oh no')
-}))
+router.get('/error', function (ctx) {
+  throw new Error('oh no');
+});
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 module.exports = app

@@ -7,6 +7,7 @@ const Counter = require('passthrough-counter')
 const humanize = require('humanize-number')
 const bytes = require('bytes')
 const chalk = require('chalk')
+const moment = require('moment')
 
 /**
  * Expose logger.
@@ -35,8 +36,8 @@ const colorCodes = {
 function dev (opts) {
   return async function logger (ctx, next) {
     // request
-    const start = Date.now()
-    console.log('  ' + chalk.gray('<--') +
+    const start = ctx.start_at = Date.now()
+    console.log('  ' + moment(start).format('YYYY-MM-DD HH:mm:ss') + chalk.gray('<--') +
       ' ' + chalk.bold('%s') +
       ' ' + chalk.gray('%s'),
         ctx.method,
