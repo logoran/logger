@@ -7,13 +7,13 @@
  Development style logger middleware for [logoran](https://github.com/logoran/logoran).
 
 ```
-<-- GET /
+2018-03-09 16:10:21 <-- GET /
 --> GET / 200 835ms 746b
-<-- GET /
+2018-03-09 16:10:21 <-- GET /
 --> GET / 200 960ms 1.9kb
-<-- GET /users
+2018-03-09 16:10:21 <-- GET /users
 --> GET /users 200 357ms 922b
-<-- GET /users?page=2
+2018-03-09 16:10:21 <-- GET /users?page=2
 --> GET /users?page=2 200 466ms 4.66kb
 ```
 
