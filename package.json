@@ -2,7 +2,7 @@
   "name": "logoran-logger",
   "description": "Logging middleware for logoran",
   "repository": "logoran/logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "logoran",
     "middleware",
