@@ -37,9 +37,9 @@ function dev (opts) {
   return async function logger (ctx, next) {
     // request
     const start = ctx.start_at = Date.now()
-    console.log('  ' + moment(start).format('YYYY-MM-DD HH:mm:ss') + ' ' + chalk.gray('<--') +
+    console.log('  ' + chalk.gray('<--') +
       ' ' + chalk.bold('%s') +
-      ' ' + chalk.gray('%s'),
+      ' ' + chalk.gray('%s') + ' ' + moment(start).format('YYYY-MM-DD HH:mm:ss'),
         ctx.method,
         ctx.originalUrl)
 
